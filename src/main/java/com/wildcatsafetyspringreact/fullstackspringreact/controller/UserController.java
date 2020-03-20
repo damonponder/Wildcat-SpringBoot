@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class userController {
+public class UserController {
 
     @Autowired
     private userRepository repository;
@@ -23,11 +23,11 @@ public class userController {
         return repository.findAll();
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public users getListingsById(@PathVariable("id") String id) {
+    public users getUsersById(@PathVariable("id") String id) {
         return repository.findBy_id(id);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyListingsById(@PathVariable("id") String id,
+    public void modifyUsersById(@PathVariable("id") String id,
                                    @Valid @RequestBody users users) {
         users.set_id(id);
         repository.save(users);
