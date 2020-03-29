@@ -3,7 +3,6 @@ package com.wildcatsafetyspringreact.fullstackspringreact.controllers;
 import com.wildcatsafetyspringreact.fullstackspringreact.models.ERole;
 import com.wildcatsafetyspringreact.fullstackspringreact.models.Role;
 import com.wildcatsafetyspringreact.fullstackspringreact.models.User;
-
 import com.wildcatsafetyspringreact.fullstackspringreact.payload.request.LoginRequest;
 import com.wildcatsafetyspringreact.fullstackspringreact.payload.request.SignupRequest;
 import com.wildcatsafetyspringreact.fullstackspringreact.payload.response.JwtResponse;
@@ -12,7 +11,7 @@ import com.wildcatsafetyspringreact.fullstackspringreact.repository.RoleReposito
 import com.wildcatsafetyspringreact.fullstackspringreact.repository.UserRepository;
 import com.wildcatsafetyspringreact.fullstackspringreact.security.jwt.JwtUtils;
 import com.wildcatsafetyspringreact.fullstackspringreact.security.services.UserDetailsImpl;
-
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -83,7 +82,7 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.
+        User user = new User(new ObjectId().toHexString(),
                 signUpRequest.getFirstname(),
                 signUpRequest.getLastname(),
                 signUpRequest.getUsername(),

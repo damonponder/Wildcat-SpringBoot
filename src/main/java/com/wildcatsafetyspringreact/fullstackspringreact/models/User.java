@@ -42,7 +42,7 @@ public class User {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
-    public User(String _id, String firstname, String lastname, String username, String email, String password1) {
+    public User(String _id, String firstname, String lastname, String username, String email, String password) {
         this._id = _id;
         this.firstname = firstname;
         this.lastname = lastname;
