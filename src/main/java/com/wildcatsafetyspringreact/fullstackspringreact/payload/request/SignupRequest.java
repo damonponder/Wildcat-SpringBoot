@@ -39,11 +39,11 @@ public class SignupRequest {
     }
 
     public String getLastname() {
-        return firstname;
+        return lastname;
     }
 
-    public void setLastname(String firstname) {
-        this.firstname = firstname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getUsername() {
