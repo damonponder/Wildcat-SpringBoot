@@ -1,6 +1,7 @@
 package com.wildcatsafetyspringreact.fullstackspringreact.controllers;
 
 import com.wildcatsafetyspringreact.fullstackspringreact.models.ERole;
+import com.wildcatsafetyspringreact.fullstackspringreact.models.Observable;
 import com.wildcatsafetyspringreact.fullstackspringreact.models.Role;
 import com.wildcatsafetyspringreact.fullstackspringreact.models.User;
 import com.wildcatsafetyspringreact.fullstackspringreact.payload.request.LoginRequest;
@@ -116,6 +117,7 @@ public class AuthController {
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }
+
             });
         }
 
