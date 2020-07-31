@@ -4,10 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -27,29 +27,74 @@ public class Observable {
     private String locationOrArea;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 3, max = 20)
     private String observationDate;
 
     @NotBlank
-    @Size(max = 20)
-    @Email
+    @Size(max = 50)
     private String department;
 
     @NotBlank
-    @Size(max = 120)
+    @Size(min = 3, max = 40)
     private String responsibleSupervisor;
 
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
+    @NotBlank
+    private String categoryType;
 
-    public Observable(String _id, String submittedBy, String locationOrArea, String observationDate, String department, String responsibleSupervisor) {
-        this._id = _id;
+    @NotBlank
+    private List<String> bodyPositionCategories;
+
+    @NotBlank
+    private List<String> environmentalConditions;
+
+    @NotBlank
+    private List<String> healthCategories;
+
+    @NotBlank
+    private List<String> toolsAndEquipmentCategories;
+
+    @NotBlank
+    private List<String> procedureAndStandardsCategories;
+
+    @NotBlank
+    private List<String> qualityRelatedCategories;
+
+    @NotBlank
+    private List<String> useofPPECategories;
+
+    @NotBlank
+    private List<String> workingConditionsCategories;
+
+    public Observable(@NotBlank @Size(max = 20) String submittedBy,
+                      @NotBlank @Size(max = 20) String locationOrArea,
+                      @NotBlank @Size(min = 3, max = 20) String observationDate,
+                      @NotBlank @Size(max = 50) String department,
+                      @NotBlank @Size(min = 3, max = 40) String responsibleSupervisor,
+                      @NotBlank String categoryType,
+                      @NotBlank List<String> bodyPositionCategories,
+                      @NotBlank List<String> environmentalConditions,
+                      @NotBlank List<String> healthCategories,
+                      @NotBlank List<String> toolsAndEquipmentCategories,
+                      @NotBlank List<String> procedureAndStandardsCategories,
+                      @NotBlank List<String> qualityRelatedCategories,
+                      @NotBlank List<String> useofPPECategories,
+                      @NotBlank List<String> workingConditionsCategories) {
         this.submittedBy = submittedBy;
         this.locationOrArea = locationOrArea;
         this.observationDate = observationDate;
         this.department = department;
         this.responsibleSupervisor = responsibleSupervisor;
+        this.categoryType = categoryType;
+        this.bodyPositionCategories = bodyPositionCategories;
+        this.environmentalConditions = environmentalConditions;
+        this.healthCategories = healthCategories;
+        this.toolsAndEquipmentCategories = toolsAndEquipmentCategories;
+        this.procedureAndStandardsCategories = procedureAndStandardsCategories;
+        this.qualityRelatedCategories = qualityRelatedCategories;
+        this.useofPPECategories = useofPPECategories;
+        this.workingConditionsCategories = workingConditionsCategories;
     }
+
     public String get_id() {
         return _id;
     }
@@ -98,12 +143,76 @@ public class Observable {
         this.responsibleSupervisor = responsibleSupervisor;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getCategoryType() {
+        return categoryType;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setCategoryType(String categoryType) {
+        this.categoryType = categoryType;
+    }
+
+    public List<String> getBodyPositionCategories() {
+        return bodyPositionCategories;
+    }
+
+    public void setBodyPositionCategories(List<String> bodyPositionCategories) {
+        this.bodyPositionCategories = bodyPositionCategories;
+    }
+
+    public List<String> getEnvironmentalConditions() {
+        return environmentalConditions;
+    }
+
+    public void setEnvironmentalConditions(List<String> environmentalConditions) {
+        this.environmentalConditions = environmentalConditions;
+    }
+
+    public List<String> getHealthCategories() {
+        return healthCategories;
+    }
+
+    public void setHealthCategories(List<String> healthCategories) {
+        this.healthCategories = healthCategories;
+    }
+
+    public List<String> getToolsAndEquipmentCategories() {
+        return toolsAndEquipmentCategories;
+    }
+
+    public void setToolsAndEquipmentCategories(List<String> toolsAndEquipmentCategories) {
+        this.toolsAndEquipmentCategories = toolsAndEquipmentCategories;
+    }
+
+    public List<String> getProcedureAndStandardsCategories() {
+        return procedureAndStandardsCategories;
+    }
+
+    public void setProcedureAndStandardsCategories(List<String> procedureAndStandardsCategories) {
+        this.procedureAndStandardsCategories = procedureAndStandardsCategories;
+    }
+
+    public List<String> getQualityRelatedCategories() {
+        return qualityRelatedCategories;
+    }
+
+    public void setQualityRelatedCategories(List<String> qualityRelatedCategories) {
+        this.qualityRelatedCategories = qualityRelatedCategories;
+    }
+
+    public List<String> getUseofPPECategories() {
+        return useofPPECategories;
+    }
+
+    public void setUseofPPECategories(List<String> useofPPECategories) {
+        this.useofPPECategories = useofPPECategories;
+    }
+
+    public List<String> getWorkingConditionsCategories() {
+        return workingConditionsCategories;
+    }
+
+    public void setWorkingConditionsCategories(List<String> workingConditionsCategories) {
+        this.workingConditionsCategories = workingConditionsCategories;
     }
 }
 
