@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(path = "/api/wildcat",  consumes = "application/json", produces = "application/json")
 public class ObservController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -48,7 +48,7 @@ public class ObservController {
     // 2. ArrayList -> new ArrayList() --good, but not exactly what we're using
     // 3. List -> List<String>
     // @TODO - put back @Valid for bean validation
-    @PostMapping("/observables")
+    @PostMapping(path = "/observables",  consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> observableInfo(@RequestBody ObservableRequest observableRequest) {
         Observable observable = new Observable(
                 observableRequest.getSubmittedBy(),

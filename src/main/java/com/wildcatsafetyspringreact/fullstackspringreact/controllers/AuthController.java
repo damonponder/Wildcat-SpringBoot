@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(path = "/api/auth",  consumes = "application/json", produces = "application/json")
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -64,7 +64,7 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
-                userDetails.getEmail(),
+                userDetails.getPassword(),
                 roles));
     }
 
