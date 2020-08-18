@@ -47,7 +47,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @PostMapping(path = "/signin", consumes = "application/json", produces = "application/json")
+    @RequestMapping(path = "/signin", consumes = "application/json", produces = "application/json",method = RequestMethod.POST)
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -68,7 +68,7 @@ public class AuthController {
                 roles));
     }
 
-    @PostMapping(path = "/signup", consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "/signup", consumes = "application/json", produces = "application/json", method = RequestMethod.POST)
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
